@@ -1,0 +1,33 @@
+package tests;
+
+public class StringNumbers {
+public static int numDecodings(String s) {
+	 if (s == null || s.length() == 0 || s.charAt(0) == '0')
+		 return 0;
+	 int n=s.length();
+	 int[] dp = new int[n+1];
+	 dp[0]=0;
+	 dp[1]=1;
+	 for(int i=2; i<=n; i++)
+	 {
+		   if (s.charAt(i - 1) != '0') {
+	            dp[i] += dp[i - 1];
+	        }
+
+	        int twoDigit = Integer.parseInt(s.substring(i - 2, i));
+	        if (twoDigit >= 10 && twoDigit <= 26) {
+	            dp[i] += dp[i - 2];
+	        }
+	    }
+
+	    return dp[n];
+}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+System.out.println("Input: 12 → Output: " + numDecodings("12"));
+System.out.println("Input: 226 → Output: " + numDecodings("226"));
+System.out.println("Input: 06 → Output: " + numDecodings("06"));
+System.out.println("Input: 11106  → Output:" + numDecodings("11106"));
+	}
+
+}
