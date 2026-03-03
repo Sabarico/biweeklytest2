@@ -1,0 +1,27 @@
+package tests;
+
+public class Prices {
+public static int maxProfit(int[] Prices) {
+	int minPrice=Integer.MAX_VALUE;
+	int maxProfit=0;
+	for(int price : Prices) {
+		if(price<minPrice) {
+			minPrice=price;
+		}
+			int profit=price-minPrice;
+			if(profit>maxProfit) {
+				maxProfit=profit;
+			}
+	}
+	return maxProfit;
+}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+int[] prices1= {7,1,5,3,6,4};
+System.out.println("Output 1: " + maxProfit(prices1));
+int[] prices2= {7,6,4,3,1};
+System.out.println("Output 2: " + maxProfit(prices2));
+
+	}
+
+}
